@@ -63,8 +63,8 @@ export const RESUME_DATA = {
     dob: "08 October 2002",
     phone: "+971-58-303-9288",
     email: "abhishekviswan@gmail.com",
-    linkedin: "https://linkedin.com/in/abhishekviswanathan",
-    github: "https://github.com/abhishekviswanathan",
+    linkedin: "https://www.linkedin.com/in/abhishek-v-python-dev",
+    github: "https://github.com/AbhishekV-python-dev",
     portfolio: "https://abhishekviswanathan.dev",
     timezone: "Asia/Dubai (GST UTC+4)",
     availability: "Available for Full-time & Remote Roles in UAE / Worldwide"
