@@ -1,0 +1,55 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  # Allow manual runs from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions so the workflow can push to the gh-pages branch
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Check out the repository
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2. Set up Node.js (same major version as the project)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # 3. Install Bun (the project uses bun.lock)
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      # 4. Install dependencies using Bun
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      # 5. Build for production
+      #    - GITHUB_PAGES=true tells vite.config.ts to set the correct base path
+      #    - GEMINI_API_KEY is read from the repository secret you configured
+      - name: Build
+        run: bun run build
+        env:
+          GITHUB_PAGES: 'true'
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
+      # 6. Deploy the built dist/ folder to the gh-pages branch
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          # Adds a .nojekyll file so GitHub doesn't try to process the site with Jekyll
+          enable_jekyll: false
