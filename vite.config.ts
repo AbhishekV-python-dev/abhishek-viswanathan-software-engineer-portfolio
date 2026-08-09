@@ -5,7 +5,7 @@ import {defineConfig} from 'vite';
 
 // Repository name on GitHub — used as the base path for GitHub Pages.
 // The site will be served at: https://<username>.github.io/<REPO_NAME>/
-const REPO_NAME = 'abhishek-viswanathan';
+const REPO_NAME = 'abhishek-viswanathan-software-engineer-portfolio';
 
 export default defineConfig(() => {
   const isGitHubPages = process.env.GITHUB_PAGES === 'true';
