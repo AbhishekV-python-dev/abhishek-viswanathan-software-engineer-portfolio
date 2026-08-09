@@ -77,37 +77,40 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-12 py-4">
-      <nav className="max-w-7xl mx-auto flex items-center justify-between border-b border-white/10 bg-[#050505]/90 backdrop-blur-md px-6 py-4 rounded-2xl shadow-2xl transition-all duration-300">
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 py-3">
+      <nav className="max-w-screen-xl mx-auto flex items-center justify-between border border-white/10 bg-[#050505]/90 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-2xl transition-all duration-300">
         
         {/* Brand Logo & Title */}
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center gap-3 shrink-0">
           <a
             href="#summary"
             onClick={() => soundFX.playClick()}
             className="group flex flex-col focus:outline-none"
           >
-            <span className="text-lg font-bold tracking-tighter uppercase text-white group-hover:text-white/80 transition-colors">
-              ABHISHEK VISWANATHAN
+            <span className="text-sm font-bold tracking-tight uppercase text-white group-hover:text-white/80 transition-colors leading-tight">
+              ABHISHEK
             </span>
-            <span className="text-[10px] text-white/40 uppercase tracking-[0.3em] mt-0.5 font-mono">
-              SOFTWARE ENGINEER — PORTFOLIO 2026
+            <span className="text-sm font-bold tracking-tight uppercase text-white group-hover:text-white/80 transition-colors leading-tight">
+              VISWANATHAN
+            </span>
+            <span className="text-[9px] text-white/40 uppercase tracking-[0.25em] mt-0.5 font-mono hidden sm:block">
+              SOFTWARE ENGINEER — 2026
             </span>
           </a>
 
           {/* Location Badge */}
-          <div className="hidden lg:flex items-center space-x-1.5 border border-white/10 bg-white/5 rounded-full px-3 py-1 text-[10px] uppercase tracking-widest font-mono text-white/60">
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-white"></span>
+          <div className="hidden xl:flex items-center gap-1 border border-white/10 bg-white/5 rounded-full px-2.5 py-1 text-[9px] uppercase tracking-widest font-mono text-white/60">
+            <span className="relative flex h-1.5 w-1.5 mr-0.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400"></span>
             </span>
-            <MapPin className="h-3 w-3 text-white/40" />
+            <MapPin className="h-2.5 w-2.5 text-white/40" />
             <span>Dubai, UAE</span>
           </div>
         </div>
 
         {/* Desktop Navigation Links */}
-        <div className="hidden lg:flex items-center space-x-6">
+        <div className="hidden lg:flex items-center gap-5">
           {navLinks.map((link) => {
             const isActive = activeSection === link.href.substring(1);
             return (
@@ -116,7 +119,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 href={link.href}
                 onClick={() => soundFX.playClick()}
                 onMouseEnter={() => soundFX.playHover()}
-                className={`relative text-xs uppercase tracking-widest transition-colors duration-200 ${
+                className={`relative text-[10px] uppercase tracking-widest transition-colors duration-200 whitespace-nowrap ${
                   isActive
                     ? 'text-white font-semibold border-b border-white pb-0.5'
                     : 'text-white/60 hover:text-white'
@@ -129,7 +132,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         {/* Action Controls & Utilities */}
-        <div className="flex items-center space-x-2 sm:space-x-3">
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           
           {/* AI Chat Bot Button */}
           <button
@@ -138,10 +141,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               onOpenChatBot();
             }}
             title="Ask AI Assistant about Abhishek"
-            className="flex items-center space-x-1.5 px-3 py-1.5 border border-white/20 rounded-full text-[10px] uppercase tracking-widest text-white hover:bg-white hover:text-black transition-all bg-white/5 font-mono"
+            className="flex items-center gap-1 px-2.5 py-1.5 border border-white/20 rounded-full text-[9px] uppercase tracking-widest text-white hover:bg-white hover:text-black transition-all bg-white/5 font-mono"
           >
             <MessageSquare className="h-3 w-3 text-emerald-400 animate-pulse" />
-            <span>Ask AI</span>
+            <span className="hidden sm:inline">Ask AI</span>
           </button>
 
           {/* Interactive Terminal Drawer Trigger */}
@@ -151,10 +154,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               onToggleTerminal();
             }}
             title="Open Recruiter CLI Assistant"
-            className="flex items-center space-x-1.5 px-3 py-1.5 border border-white/20 rounded-full text-[10px] uppercase tracking-widest text-white/80 hover:bg-white hover:text-black transition-colors"
+            className="flex items-center gap-1 px-2.5 py-1.5 border border-white/20 rounded-full text-[9px] uppercase tracking-widest text-white/80 hover:bg-white hover:text-black transition-colors"
           >
             <Terminal className="h-3 w-3" />
-            <span className="hidden sm:inline font-mono">CLI</span>
+            <span className="hidden md:inline font-mono">CLI</span>
           </button>
 
           {/* Theme Color Picker */}
@@ -165,9 +168,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                 setShowThemePicker(!showThemePicker);
               }}
               title="Customize Accent Theme"
-              className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white/80 hover:bg-white hover:text-black transition-colors"
+              className="flex h-7 w-7 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white/80 hover:bg-white hover:text-black transition-colors"
             >
-              <Palette className="h-3.5 w-3.5" />
+              <Palette className="h-3 w-3" />
             </button>
 
             <AnimatePresence>
@@ -211,13 +214,13 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             onClick={toggleSound}
             title={soundEnabled ? 'Mute Sound FX' : 'Enable Interactive Sound FX'}
-            className={`flex h-8 w-8 items-center justify-center rounded-full border transition-colors ${
+            className={`flex h-7 w-7 items-center justify-center rounded-full border transition-colors ${
               soundEnabled
                 ? 'border-white/40 bg-white/10 text-white'
                 : 'border-white/10 bg-white/5 text-white/40 hover:text-white'
             }`}
           >
-            {soundEnabled ? <Volume2 className="h-3.5 w-3.5" /> : <VolumeX className="h-3.5 w-3.5" />}
+            {soundEnabled ? <Volume2 className="h-3 w-3" /> : <VolumeX className="h-3 w-3" />}
           </button>
 
           {/* Resume Modal Trigger Button */}
@@ -226,7 +229,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               soundFX.playClick();
               onOpenResumeModal();
             }}
-            className="hidden sm:inline-flex px-4 py-2 border border-white/20 rounded-full text-[10px] uppercase tracking-widest text-white/90 hover:bg-white hover:text-black transition-colors"
+            className="hidden md:inline-flex px-3 py-1.5 border border-white/20 rounded-full text-[9px] uppercase tracking-widest text-white/90 hover:bg-white hover:text-black transition-colors whitespace-nowrap"
           >
             Download CV
           </button>
@@ -235,7 +238,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <a
             href="#contact"
             onClick={() => soundFX.playClick()}
-            className="hidden md:inline-flex items-center space-x-1.5 px-4 py-2 bg-white text-black font-semibold rounded-full text-[10px] uppercase tracking-widest hover:bg-white/90 transition-colors shadow-lg"
+            className="hidden lg:inline-flex items-center gap-1 px-3 py-1.5 bg-white text-black font-semibold rounded-full text-[9px] uppercase tracking-widest hover:bg-white/90 transition-colors shadow-lg whitespace-nowrap"
           >
             <Send className="h-3 w-3" />
             <span>Contact</span>
@@ -247,9 +250,9 @@ export const Navbar: React.FC<NavbarProps> = ({
               soundFX.playClick();
               setMobileMenuOpen(!mobileMenuOpen);
             }}
-            className="flex lg:hidden h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white"
+            className="flex lg:hidden h-7 w-7 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white"
           >
-            {mobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            {mobileMenuOpen ? <X className="h-3.5 w-3.5" /> : <Menu className="h-3.5 w-3.5" />}
           </button>
         </div>
       </nav>
