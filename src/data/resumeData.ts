@@ -61,7 +61,7 @@ export const RESUME_DATA = {
     primaryRole: "Software Engineer & Python Developer",
     location: "Dubai, United Arab Emirates",
     dob: "08 October 2002",
-    phone: "+971-58-303-9288",
+    phone: "+971-56-612-1094",
     email: "abhishekviswan@gmail.com",
     linkedin: "https://www.linkedin.com/in/abhishek-v-python-dev",
     github: "https://github.com/AbhishekV-python-dev",
